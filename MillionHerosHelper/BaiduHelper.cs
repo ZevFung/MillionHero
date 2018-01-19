@@ -13,12 +13,18 @@ namespace MillionHerosHelper
     {
         public static int StatisticsKeyword(string keyword)
         {
+
             Debug.WriteLine("1");
             const string strStart = "百度为您找到相关结果约";
             const string strEnd = "个";
+            int[] next = Algorithm.InitKMPNext(strStart);
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
             string data = GetSearchString("http://www.baidu.com/s?wd=" + System.Web.HttpUtility.UrlEncode(keyword));
             //Debug.WriteLine(data);
+
             int p = data.IndexOf(strStart);
+
             if (p == -1)
                 return 0;
             int p2 = data.IndexOf(strEnd, p);
@@ -30,6 +36,10 @@ namespace MillionHerosHelper
 
             int count;
             Int32.TryParse(countStr, out count);
+
+            sw.Stop();
+            Debug.WriteLine("耗时:" + sw.ElapsedMilliseconds);
+            sw = null;
 
             return count;
         }
@@ -62,6 +72,7 @@ namespace MillionHerosHelper
             try
             {
                 WebClient wc = new WebClient();
+                wc.Proxy = null;
                 wc.Credentials = CredentialCache.DefaultCredentials;
                 wc.Encoding = Encoding.UTF8;
                 return wc.DownloadString(url);

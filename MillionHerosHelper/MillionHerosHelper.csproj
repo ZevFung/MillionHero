@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Algorithm.cs" />
     <Compile Include="AnalyzeProblem.cs" />
     <Compile Include="BaiduHelper.cs" />
     <Compile Include="Definition.cs" />

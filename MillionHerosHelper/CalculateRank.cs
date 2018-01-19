@@ -93,8 +93,6 @@ namespace MillionHerosHelper
             return pmiRank;
         }
 
-
-
         private static void StatisticsWorkThread(object args)
         {
             int type = (int)((object[])args)[0];
@@ -105,6 +103,25 @@ namespace MillionHerosHelper
 
             arr[index] = BaiduHelper.StatisticsKeyword(keyword);
             Thread.CurrentThread.Abort();
+        }
+
+        /// <summary>
+        /// 计算PMI权值
+        /// </summary>
+        /// <param name="problemCnt">问题在文本库中出现的次数</param>
+        /// <param name="answerCnt">答案在文本库中出现的次数</param>
+        /// <param name="problemAndAnswerCnt">问题+答案在文本库中出现的次数</param>
+        /// <returns></returns>
+        public static double[] CalculatePMIRank(int problemCnt, int[] answerCnt, int[] problemAndAnswerCnt)
+        {
+
+            double[] pmiRank = new double[answerCnt.Length];
+            for (int i = 0; i < pmiRank.Length; i++)
+            {
+                pmiRank[i] = GetPMI_New(problemCnt, answerCnt[i], problemAndAnswerCnt[i]);
+            }
+
+            return pmiRank;
         }
 
         /// <summary>
@@ -121,7 +138,7 @@ namespace MillionHerosHelper
             {
                 BaiduHelper.StatisticsKeyword(problem, out problemData);
             }
-            System.Diagnostics.Debug.WriteLine(problemData);
+
             double pmiSum = 0;
             foreach (double val in pmiRank)
             {

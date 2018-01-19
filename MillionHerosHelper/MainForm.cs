@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Diagnostics;
+using System.Net;
 
 namespace MillionHerosHelper
 {
@@ -19,12 +20,13 @@ namespace MillionHerosHelper
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            
+            ServicePointManager.MaxServicePoints = 512;
+            ServicePointManager.DefaultConnectionLimit = 512;
         }
 
         private void button_AnalyzeProblem_Click(object sender, EventArgs e)
         {
-            AnalyzeResult ar = AnalyzeProblem.Analyze(textBox_Problem.Text, new string[3] { textBox_AnswerA.Text, textBox_AnswerB.Text, textBox_AnswerC.Text });
+            AnalyzeResult ar = AnalyzeProblem.AnalyzeNew(textBox_Problem.Text, new string[3] { textBox_AnswerA.Text, textBox_AnswerB.Text, textBox_AnswerC.Text });
 
             Debug.WriteLine(ar.PMIRank[0] + "  " + ar.PMIRank[1] + "  " + ar.PMIRank[2]);
             Debug.WriteLine(ar.CntRank[0] + "  " + ar.CntRank[1] + "  " + ar.CntRank[2]);
