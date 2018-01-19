@@ -5,6 +5,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Diagnostics;
 using System.Threading;
+using System.Text.RegularExpressions;
 
 namespace MillionHerosHelper
 {
@@ -28,12 +29,18 @@ namespace MillionHerosHelper
             double[] sumRank = new double[answerArr.Length];
 
             int maxIndex = 0;
+            int minIndex = 0;
             for (int i=0; i<answerArr.Length; i++)
             {
                 sumRank[i] = pmiRank[i] + cntRank[i];
                 if (sumRank[i] > sumRank[maxIndex]) 
                 {
                     maxIndex = i;
+                }
+
+                if (sumRank[i] < sumRank[minIndex])
+                {
+                    minIndex = i;
                 }
             }
 
@@ -57,6 +64,7 @@ namespace MillionHerosHelper
         /// <returns></returns>
         public static AnalyzeResult AnalyzeNew(string problem, string[] answerArr)
         {
+            bool oppose = Regex.IsMatch(problem, "不是|不属于");//是否存在相反的关键词
             //移除部分干扰搜索的关键字
             problem = RemoveUselessInfo(problem);
 
@@ -114,6 +122,7 @@ namespace MillionHerosHelper
             double[] sumRank = new double[answerArr.Length];
 
             int maxIndex = 0;
+            int minIndex = 0;
             for (int i = 0; i < answerArr.Length; i++)
             {
                 sumRank[i] = pmiRank[i] + cntRank[i];
@@ -121,12 +130,21 @@ namespace MillionHerosHelper
                 {
                     maxIndex = i;
                 }
+
+                if (sumRank[i] < sumRank[minIndex])
+                {
+                    minIndex = i;
+                }
             }
 
             AnalyzeResult ar;
             ar.CntRank = cntRank;
             ar.PMIRank = pmiRank;
             ar.Index = maxIndex;
+            if (oppose) 
+            {
+                ar.Index = minIndex;
+            }
             ar.SumRank = sumRank;
             return ar;
         }
@@ -146,7 +164,7 @@ namespace MillionHerosHelper
         }
         public static string RemoveUselessInfo(string str)
         {
-            string[] dic = new string[] {"“","”","\"","以下","下列","哪个","哪项","选项"};
+            string[] dic = new string[] { "“", "”", "\"", "以下", "下列", "哪个", "哪项", "选项", "不是", "不属于" };
             string res = str;
             foreach(string key in dic)
             {
