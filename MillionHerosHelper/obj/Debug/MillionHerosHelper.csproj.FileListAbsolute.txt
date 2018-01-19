@@ -1,0 +1,9 @@
+c:\users\96152\source\repos\MillionHerosHelper\MillionHerosHelper\bin\Debug\MillionHerosHelper.exe
+c:\users\96152\source\repos\MillionHerosHelper\MillionHerosHelper\bin\Debug\MillionHerosHelper.pdb
+c:\users\96152\source\repos\MillionHerosHelper\MillionHerosHelper\obj\Debug\MillionHerosHelper.csprojResolveAssemblyReference.cache
+c:\users\96152\source\repos\MillionHerosHelper\MillionHerosHelper\obj\Debug\MillionHerosHelper.MainForm.resources
+c:\users\96152\source\repos\MillionHerosHelper\MillionHerosHelper\obj\Debug\MillionHerosHelper.Properties.Resources.resources
+c:\users\96152\source\repos\MillionHerosHelper\MillionHerosHelper\obj\Debug\MillionHerosHelper.csproj.GenerateResource.Cache
+c:\users\96152\source\repos\MillionHerosHelper\MillionHerosHelper\obj\Debug\MillionHerosHelper.csproj.CoreCompileInputs.cache
+c:\users\96152\source\repos\MillionHerosHelper\MillionHerosHelper\obj\Debug\MillionHerosHelper.exe
+c:\users\96152\source\repos\MillionHerosHelper\MillionHerosHelper\obj\Debug\MillionHerosHelper.pdb
