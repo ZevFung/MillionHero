@@ -53,4 +53,24 @@ namespace MillionHerosHelper
         /// </summary>
         public string Text;
     }
+
+    public class APIException : ApplicationException
+    {
+        public APIException(string message) : base(message) { }
+    }
+
+    public class ADBException : ApplicationException
+    {
+        public ADBException(string message) : base(message) { }
+    }
+
+    public class OCRException : ApplicationException
+    {
+        public OCRException(string message) : base(message) { }
+    }
+
+    public class TimeLimitException : ApplicationException
+    {
+        public TimeLimitException(string message) : base(message) { }
+    }
 }

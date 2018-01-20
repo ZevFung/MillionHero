@@ -20,20 +20,27 @@ namespace MillionHerosHelper
 
         public static string Recognize(byte[] image)
         {
-            if (OCR == null)
+            try
             {
-                InitBaiDuOCR(API_KEY, SECRET_KEY);
+                if (OCR == null)
+                {
+                    InitBaiDuOCR(API_KEY, SECRET_KEY);
+                }
+
+                JObject res = OCR.GeneralBasic(image);
+
+                JToken[] arr = res["words_result"].ToArray();
+                StringBuilder sb = new StringBuilder();
+                foreach (JToken item in arr)
+                {
+                    sb.AppendLine(item["words"].ToString());
+                }
+                return sb.ToString();
             }
-
-            JObject res = OCR.GeneralBasic(image);
-
-            JToken[] arr = res["words_result"].ToArray();
-            StringBuilder sb = new StringBuilder();
-            foreach (JToken item in arr)
+            catch(ArgumentNullException)
             {
-                sb.AppendLine(item["words"].ToString());
+                throw new APIException("OCR文本识别错误,可能是网络连接异常或API调用次数达到上限");
             }
-            return sb.ToString();
         }
 
     }

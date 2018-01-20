@@ -68,19 +68,14 @@ namespace MillionHerosHelper
 
         private static string GetSearchString(string url)
         {
-            try
+            using (WebClient wc = new WebClient())
             {
-                using (WebClient wc = new WebClient())
-                {
-                    wc.Proxy = null;
-                    wc.Credentials = CredentialCache.DefaultCredentials;
-                    wc.Encoding = Encoding.UTF8;
-                    return wc.DownloadString(url);
-                }
-            }
-            catch
-            {
-                return "";
+                wc.Proxy = null;
+                wc.Credentials = CredentialCache.DefaultCredentials;
+                wc.Encoding = Encoding.UTF8;
+                string str = wc.DownloadString(url);
+                wc.Dispose();
+                return str;
             }
         }
     }

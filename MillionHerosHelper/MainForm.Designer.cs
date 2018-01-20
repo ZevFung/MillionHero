@@ -41,7 +41,6 @@
             this.textBox_AnswerA = new System.Windows.Forms.TextBox();
             this.textBox_AnswerB = new System.Windows.Forms.TextBox();
             this.textBox_AnswerC = new System.Windows.Forms.TextBox();
-            this.backgroundWorker_Main = new System.ComponentModel.BackgroundWorker();
             this.SuspendLayout();
             // 
             // label_RankA
@@ -134,7 +133,7 @@
             // 
             // textBox_AnswerA
             // 
-            this.textBox_AnswerA.Location = new System.Drawing.Point(93, 179);
+            this.textBox_AnswerA.Location = new System.Drawing.Point(94, 185);
             this.textBox_AnswerA.Name = "textBox_AnswerA";
             this.textBox_AnswerA.Size = new System.Drawing.Size(368, 25);
             this.textBox_AnswerA.TabIndex = 20;
@@ -153,15 +152,11 @@
             this.textBox_AnswerC.Size = new System.Drawing.Size(365, 25);
             this.textBox_AnswerC.TabIndex = 22;
             // 
-            // backgroundWorker_Main
-            // 
-            this.backgroundWorker_Main.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker_Main_DoWork);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(711, 461);
+            this.ClientSize = new System.Drawing.Size(511, 461);
             this.Controls.Add(this.textBox_AnswerC);
             this.Controls.Add(this.textBox_AnswerB);
             this.Controls.Add(this.textBox_AnswerA);
@@ -197,7 +192,6 @@
         private System.Windows.Forms.TextBox textBox_AnswerA;
         private System.Windows.Forms.TextBox textBox_AnswerB;
         private System.Windows.Forms.TextBox textBox_AnswerC;
-        private System.ComponentModel.BackgroundWorker backgroundWorker_Main;
     }
 }
 
