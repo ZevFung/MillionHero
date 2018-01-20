@@ -103,7 +103,7 @@ namespace MillionHerosHelper
             int[] probability = new int[answerArr.Length];
             for (int i = 0; i < answerArr.Length; i++)
             {
-                probability[i] = (int)(cntRank[i] / probabilitySum * 100);
+                probability[i] = (int)(sumRank[i] / probabilitySum * 100);
             }
 
             AnalyzeResult ar;

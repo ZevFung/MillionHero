@@ -147,6 +147,7 @@ namespace MillionHerosHelper
             {
                 screenShotPath = ADB.GetScreenshotPath();
                 smallScreenShot = BitmapOperation.CutImage(screenShotPath, new Point(Config.CutX, Config.CutY), new Size(Config.CutWidth, Config.CutHeight));
+                System.IO.File.Delete(screenShotPath);
             }
             catch(Exception ex)
             {
@@ -228,7 +229,7 @@ namespace MillionHerosHelper
 
         private void MainForm_Move(object sender, EventArgs e)
         {
-            if(browserForm!=null && !browserForm.IsDisposed)
+            if (browserForm != null && !browserForm.IsDisposed) 
             {
                 browserForm.Location = new Point(this.Location.X + this.Width + 10, browserForm.Location.Y);
             }
