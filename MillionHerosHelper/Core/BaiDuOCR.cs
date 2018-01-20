@@ -9,8 +9,6 @@ namespace MillionHerosHelper
 {
     static class BaiDuOCR
     {
-        private const string API_KEY = "xxx";
-        private const string SECRET_KEY = "xxx";
         private static Ocr OCR;
 
         public static void InitBaiDuOCR(string api_key, string secret_key)
@@ -24,7 +22,7 @@ namespace MillionHerosHelper
             {
                 if (OCR == null)
                 {
-                    InitBaiDuOCR(API_KEY, SECRET_KEY);
+                    InitBaiDuOCR(Config.OCR_API_KEY, Config.OCR_SECRET_KEY);
                 }
 
                 JObject res = OCR.GeneralBasic(image);

@@ -20,6 +20,13 @@ namespace MillionHerosHelper
 
         private void ConfigForm_Load(object sender, EventArgs e)
         {
+            textBox_X.Text = Config.CutX.ToString();
+            textBox_Y.Text = Config.CutY.ToString();
+            textBox_Height.Text = Config.CutHeight.ToString();
+            textBox_Width.Text = Config.CutWidth.ToString();
+
+            textBox_API_KEY.Text = Config.OCR_API_KEY;
+            textBox_SECRET_KEY.Text = Config.OCR_SECRET_KEY;
 
         }
 
@@ -95,11 +102,12 @@ namespace MillionHerosHelper
                 return;
             }
 
-            MainForm.CutX = x;
-            MainForm.CutY = y;
-            MainForm.CutHeight = height;
-            MainForm.CutWidth = width;
-
+            Config.CutX = x;
+            Config.CutY = y;
+            Config.CutHeight = height;
+            Config.CutWidth = width;
+            Config.OCR_API_KEY = textBox_API_KEY.Text;
+            Config.OCR_SECRET_KEY = textBox_SECRET_KEY.Text;
             BaiDuOCR.InitBaiDuOCR(textBox_API_KEY.Text, textBox_SECRET_KEY.Text);
         }
 

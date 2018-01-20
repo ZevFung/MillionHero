@@ -15,10 +15,6 @@ namespace MillionHerosHelper
 {
     public partial class MainForm : Form
     {
-        public static int CutX { get; set; }
-        public static int CutY { get; set; }
-        public static int CutHeight { get; set; }
-        public static int CutWidth { get; set; }
 
         private ConfigForm configForm;
         private BrowserForm browserForm;
@@ -36,12 +32,9 @@ namespace MillionHerosHelper
             System.Net.ServicePointManager.DefaultConnectionLimit = 64;
             Control.CheckForIllegalCrossThreadCalls = false;
 
-            CutX = 80;
-            CutY = 250;
-            CutHeight = 1000;
-            CutWidth = 900;
+            Config.LoadConfig();
 
-            //BaiDuOCR.InitBaiDuOCR("0kEPZddCBO5cUD0Lf1yTN91O", "fEkXWR4CINttqCQVAQejX5cXgQKrVbnW");
+            BaiDuOCR.InitBaiDuOCR(Config.OCR_API_KEY, Config.OCR_SECRET_KEY);
             browserForm = new BrowserForm();
             
             browserForm.Show();
@@ -153,7 +146,7 @@ namespace MillionHerosHelper
             try
             {
                 screenShotPath = ADB.GetScreenshotPath();
-                smallScreenShot = BitmapOperation.CutImage(screenShotPath, new Point(CutX, CutY), new Size(CutWidth, CutHeight));
+                smallScreenShot = BitmapOperation.CutImage(screenShotPath, new Point(Config.CutX, Config.CutY), new Size(Config.CutWidth, Config.CutHeight));
             }
             catch(Exception ex)
             {
@@ -239,6 +232,11 @@ namespace MillionHerosHelper
             {
                 browserForm.Location = new Point(this.Location.X + this.Width + 10, browserForm.Location.Y);
             }
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Config.SaveConfig();
         }
     }
 }

@@ -62,6 +62,7 @@
     <Compile Include="ConfigForm.Designer.cs">
       <DependentUpon>ConfigForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Configuration.cs" />
     <Compile Include="Helper\ADB.cs" />
     <Compile Include="Helper\BitmapOperation.cs" />
     <Compile Include="Core\BaiDuOCR.cs" />
@@ -69,6 +70,7 @@
     <Compile Include="Core\AnalyzeProblem.cs" />
     <Compile Include="Core\SearchEngine.cs" />
     <Compile Include="Definition.cs" />
+    <Compile Include="Helper\INIOperation.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -226,7 +226,6 @@
             this.textBox_API_KEY.Name = "textBox_API_KEY";
             this.textBox_API_KEY.Size = new System.Drawing.Size(305, 25);
             this.textBox_API_KEY.TabIndex = 18;
-            this.textBox_API_KEY.Text = "0kEPZddCBO5cUD0Lf1yTN91O";
             // 
             // label_API_KEY
             // 
@@ -252,7 +251,6 @@
             this.textBox_SECRET_KEY.Name = "textBox_SECRET_KEY";
             this.textBox_SECRET_KEY.Size = new System.Drawing.Size(305, 25);
             this.textBox_SECRET_KEY.TabIndex = 21;
-            this.textBox_SECRET_KEY.Text = "fEkXWR4CINttqCQVAQejX5cXgQKrVbnW";
             // 
             // ConfigForm
             // 
