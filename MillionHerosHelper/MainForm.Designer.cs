@@ -45,6 +45,8 @@
             this.label_AnalyzeA = new System.Windows.Forms.Label();
             this.label_AnalyzeB = new System.Windows.Forms.Label();
             this.label_AnalyzeC = new System.Windows.Forms.Label();
+            this.linkLabel_Author = new System.Windows.Forms.LinkLabel();
+            this.linkLabel_SourceCode = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // label_RankA
@@ -204,11 +206,35 @@
             this.label_AnalyzeC.Size = new System.Drawing.Size(0, 17);
             this.label_AnalyzeC.TabIndex = 26;
             // 
+            // linkLabel_Author
+            // 
+            this.linkLabel_Author.AutoSize = true;
+            this.linkLabel_Author.Location = new System.Drawing.Point(413, 12);
+            this.linkLabel_Author.Name = "linkLabel_Author";
+            this.linkLabel_Author.Size = new System.Drawing.Size(87, 15);
+            this.linkLabel_Author.TabIndex = 27;
+            this.linkLabel_Author.TabStop = true;
+            this.linkLabel_Author.Text = "By Azure99";
+            this.linkLabel_Author.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel_Author_LinkClicked);
+            // 
+            // linkLabel_SourceCode
+            // 
+            this.linkLabel_SourceCode.AutoSize = true;
+            this.linkLabel_SourceCode.Location = new System.Drawing.Point(413, 43);
+            this.linkLabel_SourceCode.Name = "linkLabel_SourceCode";
+            this.linkLabel_SourceCode.Size = new System.Drawing.Size(87, 15);
+            this.linkLabel_SourceCode.TabIndex = 28;
+            this.linkLabel_SourceCode.TabStop = true;
+            this.linkLabel_SourceCode.Text = "SourceCode";
+            this.linkLabel_SourceCode.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel_SourceCode_LinkClicked);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(512, 519);
+            this.Controls.Add(this.linkLabel_SourceCode);
+            this.Controls.Add(this.linkLabel_Author);
             this.Controls.Add(this.label_AnalyzeC);
             this.Controls.Add(this.label_AnalyzeB);
             this.Controls.Add(this.label_AnalyzeA);
@@ -257,6 +283,8 @@
         private System.Windows.Forms.Label label_AnalyzeA;
         private System.Windows.Forms.Label label_AnalyzeB;
         private System.Windows.Forms.Label label_AnalyzeC;
+        private System.Windows.Forms.LinkLabel linkLabel_Author;
+        private System.Windows.Forms.LinkLabel linkLabel_SourceCode;
     }
 }
 

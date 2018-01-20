@@ -239,5 +239,15 @@ namespace MillionHerosHelper
         {
             Config.SaveConfig();
         }
+
+        private void linkLabel_Author_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start("https://github.com/Azure99");
+        }
+
+        private void linkLabel_SourceCode_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start("https://github.com/Azure99/MillionHerosHelper");
+        }
     }
 }
