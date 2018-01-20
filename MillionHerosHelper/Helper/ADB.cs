@@ -37,7 +37,7 @@ namespace MillionHerosHelper
 
             
             RunADBCommand("adb shell screencap -p /sdcard/" + fileName);
-            RunADBCommand("adb pull /sdcard/" + fileName + " " + folder + fileName);
+            RunADBCommand("adb pull /sdcard/" + fileName + " \"" + folder + fileName + "\"");
             RunADBCommand("adb shell rm /sdcard/" + fileName);
 
             byte[] image = File.ReadAllBytes(folder + fileName);
@@ -56,7 +56,7 @@ namespace MillionHerosHelper
             string fileName = DateTime.Now.ToFileTime().ToString() + ".png";
 
             RunADBCommand("adb shell screencap -p /sdcard/" + fileName);
-            RunADBCommand("adb pull /sdcard/" + fileName + " " + folder + fileName);
+            RunADBCommand("adb pull /sdcard/" + fileName + " \"" + folder + fileName + "\"");
             RunADBCommand("adb shell rm /sdcard/" + fileName);
 
             return folder + fileName;
