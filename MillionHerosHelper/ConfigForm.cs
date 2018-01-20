@@ -81,7 +81,31 @@ namespace MillionHerosHelper
 
         private void button_SaveConfig_Click(object sender, EventArgs e)
         {
+            int x = 0, y = 0, width = 2, height = 2;
+            try
+            {
+                x = int.Parse(textBox_X.Text);
+                y = int.Parse(textBox_Y.Text);
+                width = int.Parse(textBox_Width.Text);
+                height = int.Parse(textBox_Height.Text);
+            }
+            catch
+            {
+                MessageBox.Show("截图信息格式不正确,必须为数字");
+                return;
+            }
 
+            MainForm.CutX = x;
+            MainForm.CutY = y;
+            MainForm.CutHeight = height;
+            MainForm.CutWidth = width;
+
+            BaiDuOCR.InitBaiDuOCR(textBox_API_KEY.Text, textBox_SECRET_KEY.Text);
+        }
+
+        private void linkLabel_Apply_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start("https://cloud.baidu.com/product/ocr/general");
         }
     }
 }

@@ -44,6 +44,12 @@
             this.textBox_Height = new System.Windows.Forms.TextBox();
             this.textBox_Width = new System.Windows.Forms.TextBox();
             this.button_SaveConfig = new System.Windows.Forms.Button();
+            this.label_OCR = new System.Windows.Forms.Label();
+            this.linkLabel_Apply = new System.Windows.Forms.LinkLabel();
+            this.textBox_API_KEY = new System.Windows.Forms.TextBox();
+            this.label_API_KEY = new System.Windows.Forms.Label();
+            this.label_SECRET_KEY = new System.Windows.Forms.Label();
+            this.textBox_SECRET_KEY = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_ScreenShot)).BeginInit();
             this.SuspendLayout();
             // 
@@ -186,7 +192,7 @@
             // 
             // button_SaveConfig
             // 
-            this.button_SaveConfig.Location = new System.Drawing.Point(160, 440);
+            this.button_SaveConfig.Location = new System.Drawing.Point(169, 559);
             this.button_SaveConfig.Name = "button_SaveConfig";
             this.button_SaveConfig.Size = new System.Drawing.Size(120, 35);
             this.button_SaveConfig.TabIndex = 15;
@@ -194,11 +200,71 @@
             this.button_SaveConfig.UseVisualStyleBackColor = true;
             this.button_SaveConfig.Click += new System.EventHandler(this.button_SaveConfig_Click);
             // 
+            // label_OCR
+            // 
+            this.label_OCR.AutoSize = true;
+            this.label_OCR.Location = new System.Drawing.Point(33, 433);
+            this.label_OCR.Name = "label_OCR";
+            this.label_OCR.Size = new System.Drawing.Size(139, 15);
+            this.label_OCR.TabIndex = 16;
+            this.label_OCR.Text = "3.百度OCR API信息";
+            // 
+            // linkLabel_Apply
+            // 
+            this.linkLabel_Apply.AutoSize = true;
+            this.linkLabel_Apply.Location = new System.Drawing.Point(361, 433);
+            this.linkLabel_Apply.Name = "linkLabel_Apply";
+            this.linkLabel_Apply.Size = new System.Drawing.Size(67, 15);
+            this.linkLabel_Apply.TabIndex = 17;
+            this.linkLabel_Apply.TabStop = true;
+            this.linkLabel_Apply.Text = "点我申请";
+            this.linkLabel_Apply.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel_Apply_LinkClicked);
+            // 
+            // textBox_API_KEY
+            // 
+            this.textBox_API_KEY.Location = new System.Drawing.Point(139, 463);
+            this.textBox_API_KEY.Name = "textBox_API_KEY";
+            this.textBox_API_KEY.Size = new System.Drawing.Size(305, 25);
+            this.textBox_API_KEY.TabIndex = 18;
+            this.textBox_API_KEY.Text = "0kEPZddCBO5cUD0Lf1yTN91O";
+            // 
+            // label_API_KEY
+            // 
+            this.label_API_KEY.AutoSize = true;
+            this.label_API_KEY.Location = new System.Drawing.Point(33, 468);
+            this.label_API_KEY.Name = "label_API_KEY";
+            this.label_API_KEY.Size = new System.Drawing.Size(71, 15);
+            this.label_API_KEY.TabIndex = 19;
+            this.label_API_KEY.Text = "API_KEY:";
+            // 
+            // label_SECRET_KEY
+            // 
+            this.label_SECRET_KEY.AutoSize = true;
+            this.label_SECRET_KEY.Location = new System.Drawing.Point(30, 511);
+            this.label_SECRET_KEY.Name = "label_SECRET_KEY";
+            this.label_SECRET_KEY.Size = new System.Drawing.Size(95, 15);
+            this.label_SECRET_KEY.TabIndex = 20;
+            this.label_SECRET_KEY.Text = "SECRET_KEY:";
+            // 
+            // textBox_SECRET_KEY
+            // 
+            this.textBox_SECRET_KEY.Location = new System.Drawing.Point(139, 504);
+            this.textBox_SECRET_KEY.Name = "textBox_SECRET_KEY";
+            this.textBox_SECRET_KEY.Size = new System.Drawing.Size(305, 25);
+            this.textBox_SECRET_KEY.TabIndex = 21;
+            this.textBox_SECRET_KEY.Text = "fEkXWR4CINttqCQVAQejX5cXgQKrVbnW";
+            // 
             // ConfigForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(472, 487);
+            this.ClientSize = new System.Drawing.Size(472, 606);
+            this.Controls.Add(this.textBox_SECRET_KEY);
+            this.Controls.Add(this.label_SECRET_KEY);
+            this.Controls.Add(this.label_API_KEY);
+            this.Controls.Add(this.textBox_API_KEY);
+            this.Controls.Add(this.linkLabel_Apply);
+            this.Controls.Add(this.label_OCR);
             this.Controls.Add(this.button_SaveConfig);
             this.Controls.Add(this.textBox_Width);
             this.Controls.Add(this.textBox_Height);
@@ -242,5 +308,11 @@
         private System.Windows.Forms.TextBox textBox_Height;
         private System.Windows.Forms.TextBox textBox_Width;
         private System.Windows.Forms.Button button_SaveConfig;
+        private System.Windows.Forms.Label label_OCR;
+        private System.Windows.Forms.LinkLabel linkLabel_Apply;
+        private System.Windows.Forms.TextBox textBox_API_KEY;
+        private System.Windows.Forms.Label label_API_KEY;
+        private System.Windows.Forms.Label label_SECRET_KEY;
+        private System.Windows.Forms.TextBox textBox_SECRET_KEY;
     }
 }

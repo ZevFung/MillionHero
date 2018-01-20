@@ -41,7 +41,7 @@ namespace MillionHerosHelper
             CutHeight = 1000;
             CutWidth = 900;
 
-            BaiDuOCR.InitBaiDuOCR("0kEPZddCBO5cUD0Lf1yTN91O", "fEkXWR4CINttqCQVAQejX5cXgQKrVbnW");
+            //BaiDuOCR.InitBaiDuOCR("0kEPZddCBO5cUD0Lf1yTN91O", "fEkXWR4CINttqCQVAQejX5cXgQKrVbnW");
             browserForm = new BrowserForm();
             
             browserForm.Show();
