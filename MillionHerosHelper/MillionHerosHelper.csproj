@@ -50,11 +50,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ADB.cs" />
-    <Compile Include="BaiDuOCR.cs" />
+    <Compile Include="Helper\ADB.cs" />
+    <Compile Include="Helper\BitmapOperation.cs" />
+    <Compile Include="Core\BaiDuOCR.cs" />
     <Compile Include="Helper\Algorithm.cs" />
-    <Compile Include="AnalyzeProblem.cs" />
-    <Compile Include="BaiduHelper.cs" />
+    <Compile Include="Core\AnalyzeProblem.cs" />
+    <Compile Include="Core\SearchEngine.cs" />
     <Compile Include="Definition.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -62,7 +63,7 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="CalculateRank.cs" />
+    <Compile Include="Core\CalculateRank.cs" />
     <Compile Include="Helper\ProcessHelper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

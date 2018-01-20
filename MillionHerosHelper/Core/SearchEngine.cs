@@ -9,12 +9,13 @@ using System.Web;
 
 namespace MillionHerosHelper
 {
-    public static class BaiduHelper
+    static class SearchEngine
     {
+        /// <summary>
+        /// 取得关键字在搜索引擎文本库中的出现次数
+        /// </summary>
         public static int StatisticsKeyword(string keyword)
         {
-
-            Debug.WriteLine("1");
             const string strStart = "百度为您找到相关结果约";
             const string strEnd = "个";
             int[] next = Algorithm.InitKMPNext(strStart);
@@ -71,11 +72,13 @@ namespace MillionHerosHelper
         {
             try
             {
-                WebClient wc = new WebClient();
-                wc.Proxy = null;
-                wc.Credentials = CredentialCache.DefaultCredentials;
-                wc.Encoding = Encoding.UTF8;
-                return wc.DownloadString(url);
+                using (WebClient wc = new WebClient())
+                {
+                    wc.Proxy = null;
+                    wc.Credentials = CredentialCache.DefaultCredentials;
+                    wc.Encoding = Encoding.UTF8;
+                    return wc.DownloadString(url);
+                }
             }
             catch
             {

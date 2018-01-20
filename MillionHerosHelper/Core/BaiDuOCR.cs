@@ -7,7 +7,7 @@ using Baidu.Aip.Ocr;
 
 namespace MillionHerosHelper
 {
-    public static class BaiDuOCR
+    static class BaiDuOCR
     {
         private const string API_KEY = "xxx";
         private const string SECRET_KEY = "xxx";
@@ -17,7 +17,8 @@ namespace MillionHerosHelper
         {
             OCR = new Ocr(api_key, secret_key);
         }
-        public static string get(byte[] image)
+
+        public static string Recognize(byte[] image)
         {
             if (OCR == null)
             {

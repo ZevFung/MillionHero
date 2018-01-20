@@ -5,13 +5,11 @@ using System.Text;
 
 namespace MillionHerosHelper
 {
-    class Algorithm
+    static class Algorithm
     {
         /// <summary>
         /// 初始化KMP算法的Next数组
         /// </summary>
-        /// <param name="objStr"></param>
-        /// <returns></returns>
         public static int[] InitKMPNext(string objStr)
         {
             int[] next = new int[objStr.Length + 1];
@@ -31,10 +29,7 @@ namespace MillionHerosHelper
         /// <summary>
         /// KMP字符串查找算法
         /// </summary>
-        /// <param name="sourceStr">原字符串</param>
-        /// <param name="objStr">子字符串</param>
         /// <param name="next">Next数组</param>
-        /// <param name="startP">开始位置</param>
         /// <returns></returns>
         public static int KMPSearch(string sourceStr, string objStr, int[] next, int startP = 0)
         {

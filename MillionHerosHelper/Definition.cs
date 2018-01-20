@@ -28,16 +28,6 @@ namespace MillionHerosHelper
         /// </summary>
         public double[] SumRank;
     }
-
-    /// <summary>
-    /// 用于多线程传递数组类型
-    /// </summary>
-    public enum ArrType
-    {
-        AnswerCnt = 0,
-        ProblemAndAnswerCnt = 1
-    }
-
     /// <summary>
     /// 用于多线程传递任务类型
     /// </summary>

@@ -6,7 +6,7 @@ using System.Diagnostics;
 
 namespace MillionHerosHelper
 {
-    class ProcessHelper
+    static class ProcessHelper
     {
         public static string RunProcessAndGetOutPut(string fileName, string args, string workingDirectory = "")
         {

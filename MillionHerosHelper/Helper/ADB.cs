@@ -6,7 +6,7 @@ using System.IO;
 
 namespace MillionHerosHelper
 {
-    public static class ADB
+    static class ADB
     {
         public static bool CheckConnect()
         {
@@ -25,10 +25,6 @@ namespace MillionHerosHelper
 
         }
 
-        /// <summary>
-        /// 获取屏幕截图,请确保手机已经连接
-        /// </summary>
-        /// <returns>返回图片路径(临时)</returns>
         public static byte[] GetScreenshort()
         {
             if (!Directory.Exists("screenshort"))
@@ -42,7 +38,7 @@ namespace MillionHerosHelper
             RunADBCommand("adb shell screencap -p /sdcard/" + fileName);
             RunADBCommand("adb pull /sdcard/" + fileName + " " + folder + fileName);
             RunADBCommand("adb shell rm /sdcard/" + fileName);
-            System.Diagnostics.Debug.WriteLine(folder + fileName);
+
             byte[] image = File.ReadAllBytes(folder + fileName);
             File.Delete(folder + fileName);
             return image;
