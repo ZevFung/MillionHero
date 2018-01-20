@@ -198,7 +198,17 @@ namespace MillionHerosHelper
             AnalyzeResult aRes = AnalyzeProblem.Analyze(textBox_Problem.Text, new string[] { textBox_AnswerA.Text, textBox_AnswerB.Text, textBox_AnswerC.Text });
             char[] ans = new char[3] { 'A', 'B', 'C' };
             label_Message.Text = "最有可能选择:" + ans[aRes.Index] + "项!";
+            if(aRes.Oppose)
+            {
+                label_Message.Text += "(包含否定词)";
+            }
+
             label_Message.ForeColor = Color.Green;
+
+            //显示概率
+            label_AnalyzeA.Text = "概率:" + aRes.Probability[0].ToString() + "%";
+            label_AnalyzeB.Text = "概率:" + aRes.Probability[1].ToString() + "%";
+            label_AnalyzeC.Text = "概率:" + aRes.Probability[2].ToString() + "%";
         }
 
         private void CheckOCRResult(string[] arr)

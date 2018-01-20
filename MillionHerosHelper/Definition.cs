@@ -27,6 +27,14 @@ namespace MillionHerosHelper
         /// 总权重
         /// </summary>
         public double[] SumRank;
+        /// <summary>
+        /// 概率
+        /// </summary>
+        public int[] Probability;
+        /// <summary>
+        /// 是否为否命题
+        /// </summary>
+        public bool Oppose;
     }
     /// <summary>
     /// 用于多线程传递任务类型

@@ -93,6 +93,20 @@ namespace MillionHerosHelper
                 }
             }
 
+            double probabilitySum = 0;
+
+            for (int i = 0; i < cntRank.Length; i++) 
+            {
+                probabilitySum += cntRank[i];
+            }
+            Debug.WriteLine("AAAAAAAAA"+probabilitySum);
+            //计算概率
+            int[] probability = new int[answerArr.Length];
+            for (int i = 0; i < answerArr.Length; i++)
+            {
+                probability[i] = (int)(cntRank[i] / probabilitySum * 100);
+            }
+
             AnalyzeResult ar;
             ar.CntRank = cntRank;
             ar.PMIRank = pmiRank;
@@ -102,6 +116,8 @@ namespace MillionHerosHelper
                 ar.Index = minIndex;
             }
             ar.SumRank = sumRank;
+            ar.Probability = probability;
+            ar.Oppose = oppose;
             return ar;
         }
 
