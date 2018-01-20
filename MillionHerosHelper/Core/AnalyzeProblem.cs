@@ -97,9 +97,8 @@ namespace MillionHerosHelper
 
             for (int i = 0; i < cntRank.Length; i++) 
             {
-                probabilitySum += cntRank[i];
+                probabilitySum += sumRank[i];
             }
-            Debug.WriteLine("AAAAAAAAA"+probabilitySum);
             //计算概率
             int[] probability = new int[answerArr.Length];
             for (int i = 0; i < answerArr.Length; i++)
