@@ -35,8 +35,7 @@ namespace MillionHerosHelper
             string countStr = data.Substring(p + strStart.Length, p2 - p - strStart.Length);
             countStr = countStr.Replace(",", "");
 
-            int count;
-            Int32.TryParse(countStr, out count);
+            Int32.TryParse(countStr, out int count);
 
             sw.Stop();
             Debug.WriteLine("耗时:" + sw.ElapsedMilliseconds);
@@ -61,8 +60,7 @@ namespace MillionHerosHelper
             string countStr = data.Substring(p + strStart.Length, p2 - p - strStart.Length);
             countStr = countStr.Replace(",", "");
 
-            int count;
-            Int32.TryParse(countStr, out count);
+            Int32.TryParse(countStr, out int count);
 
             return count;
         }

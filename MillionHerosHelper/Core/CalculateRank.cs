@@ -44,7 +44,7 @@ namespace MillionHerosHelper
                 SearchEngine.StatisticsKeyword(problem, out problemData);
             }
 
-            double pmiSum = 0;
+            double pmiSum = 0;//pmi权值和
             foreach (double val in pmiRank)
             {
                 pmiSum += val;
@@ -54,7 +54,7 @@ namespace MillionHerosHelper
             int sum = 0;//总次数
             for (int i = 0; i < answer.Length; i++)
             {
-                if (Regex.IsMatch(answer[i], "^[0-9]*$")) //若为数字则不启用此权重
+                if (Regex.IsMatch(answer[i], "^[0-9]*$")) //若为数字则不启用此权重算法
                 {
                     for (int i2 = 0; i2 < answer.Length; i2++)
                     {

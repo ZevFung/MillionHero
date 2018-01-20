@@ -25,7 +25,27 @@ namespace MillionHerosHelper
 
         }
 
-        public static byte[] GetScreenshort()
+        public static byte[] GetScreenshot()
+        {
+            if (!Directory.Exists("screenshort"))
+            {
+                Directory.CreateDirectory("screenshort");
+            }
+
+            string folder = AppDomain.CurrentDomain.BaseDirectory + "screenshort\\";
+            string fileName = DateTime.Now.ToFileTime().ToString() + ".png";
+
+            
+            RunADBCommand("adb shell screencap -p /sdcard/" + fileName);
+            RunADBCommand("adb pull /sdcard/" + fileName + " " + folder + fileName);
+            RunADBCommand("adb shell rm /sdcard/" + fileName);
+
+            byte[] image = File.ReadAllBytes(folder + fileName);
+            File.Delete(folder + fileName);
+            return image;
+        }
+
+        public static string GetScreenshotPath()
         {
             if (!Directory.Exists("screenshort"))
             {
@@ -39,9 +59,7 @@ namespace MillionHerosHelper
             RunADBCommand("adb pull /sdcard/" + fileName + " " + folder + fileName);
             RunADBCommand("adb shell rm /sdcard/" + fileName);
 
-            byte[] image = File.ReadAllBytes(folder + fileName);
-            File.Delete(folder + fileName);
-            return image;
+            return folder + fileName;
         }
 
         public static string RunADBCommand(string command)
