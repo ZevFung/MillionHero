@@ -83,6 +83,8 @@ namespace MillionHerosHelper
                 {
                     //solveProblemThread.Abort();
                     FinishSolveProblem();
+                    label_Message.Text = "题目分析超时";
+                    label_Message.ForeColor = Color.Red;
                     MessageBox.Show("答题过程超过10秒,自动终止.\r\n请确保您的网络环境良好!", "执行超时", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
@@ -101,26 +103,38 @@ namespace MillionHerosHelper
             }
             catch(ADBException ex)
             {
+                label_Message.Text = "手机连接出错";
+                label_Message.ForeColor = Color.Red;
                 MessageBox.Show("请确保已连接手机并配置正确" + "\r\n\r\n详情:\r\n" + ex.ToString(), "ADB手机连接错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch(OCRException ex)
             {
+                label_Message.Text = "题目识别出错";
+                label_Message.ForeColor = Color.Red;
                 MessageBox.Show("请确保手机在题目界面" + "\r\n\r\n详情:\r\n" + ex.ToString(), "文本识别错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch(APIException ex)
             {
+                label_Message.Text = "网络连接出错";
+                label_Message.ForeColor = Color.Red;
                 MessageBox.Show("请确保网络连接正常以及API可用" + "\r\n\r\n详情:\r\n" + ex.ToString(), "API错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch(IndexOutOfRangeException ex)
             {
+                label_Message.Text = "题目识别出错";
+                label_Message.ForeColor = Color.Red;
                 MessageBox.Show("请确保手机在题目界面" + "\r\n\r\n详情:\r\n" + ex.ToString(), "解析错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch(WebException ex)
             {
+                label_Message.Text = "网络连接出错";
+                label_Message.ForeColor = Color.Red;
                 MessageBox.Show("请确保网络环境良好" + "\r\n\r\n详情:\r\n" + ex.ToString(), "网络错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch(Exception ex)
             {
+                label_Message.Text = "未知错误";
+                label_Message.ForeColor = Color.Red;
                 MessageBox.Show(ex.ToString(), "未知错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
@@ -131,6 +145,8 @@ namespace MillionHerosHelper
 
         private void SolveProblem()
         {
+            label_Message.Text = "正在获取手机界面";
+            label_Message.ForeColor = Color.Orange;
             //获取屏幕截图
             string screenShotPath;
             byte[] smallScreenShot;
@@ -144,6 +160,7 @@ namespace MillionHerosHelper
                 throw new ADBException("获取的屏幕截图无效!" + ex);
             }
 
+            label_Message.Text = "正在识别题目信息";
             //调用API识别文字
             string recognizeResult = BaiDuOCR.Recognize(smallScreenShot);
 
@@ -176,10 +193,12 @@ namespace MillionHerosHelper
             browserForm.Show();
             browserForm.WindowState = FormWindowState.Normal;
 
-            char[] ans = new char[3] { 'A', 'B', 'C' };
+            label_Message.Text = "正在分析题目";
             //分析问题
             AnalyzeResult aRes = AnalyzeProblem.Analyze(textBox_Problem.Text, new string[] { textBox_AnswerA.Text, textBox_AnswerB.Text, textBox_AnswerC.Text });
-            MessageBox.Show("最有可能选择" + ans[aRes.Index] + "项!");
+            char[] ans = new char[3] { 'A', 'B', 'C' };
+            label_Message.Text = "最有可能选择:" + ans[aRes.Index] + "项!";
+            label_Message.ForeColor = Color.Green;
         }
 
         private void CheckOCRResult(string[] arr)
