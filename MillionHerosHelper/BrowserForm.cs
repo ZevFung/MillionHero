@@ -28,7 +28,8 @@ namespace MillionHerosHelper
 
         private void BrowserForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-
+            e.Cancel = true;
+            this.Hide();
         }
     }
 }

@@ -170,9 +170,13 @@
             this.Controls.Add(this.label_RankC);
             this.Controls.Add(this.label_RankB);
             this.Controls.Add(this.label_RankA);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "MainForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "百万英雄超级答题助手";
             this.Load += new System.EventHandler(this.MainForm_Load);
+            this.Move += new System.EventHandler(this.MainForm_Move);
             this.ResumeLayout(false);
             this.PerformLayout();
 

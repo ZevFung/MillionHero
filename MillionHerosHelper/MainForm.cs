@@ -43,7 +43,9 @@ namespace MillionHerosHelper
 
             BaiDuOCR.InitBaiDuOCR("0kEPZddCBO5cUD0Lf1yTN91O", "fEkXWR4CINttqCQVAQejX5cXgQKrVbnW");
             browserForm = new BrowserForm();
+            
             browserForm.Show();
+            MainForm_Move(null, null);
         }
 
         private void button_Config_Click(object sender, EventArgs e)
@@ -129,7 +131,7 @@ namespace MillionHerosHelper
 
         private void SolveProblem()
         {
-
+            //获取屏幕截图
             string screenShotPath;
             byte[] smallScreenShot;
             try
@@ -142,13 +144,14 @@ namespace MillionHerosHelper
                 throw new ADBException("获取的屏幕截图无效!" + ex);
             }
 
+            //调用API识别文字
             string recognizeResult = BaiDuOCR.Recognize(smallScreenShot);
 
 
             string[] recRes = Regex.Split(recognizeResult, "\r\n|\r|\n");
-
+            //检查识别结果正确性
             CheckOCRResult(recRes);
-            
+            //显示识别结果
             textBox_AnswerC.Text = recRes[recRes.Length - 2];
             textBox_AnswerB.Text = recRes[recRes.Length - 3];
             textBox_AnswerA.Text = recRes[recRes.Length - 4];
@@ -167,10 +170,14 @@ namespace MillionHerosHelper
             }
 
             textBox_Problem.Text = problem;
-
+            
+            //浏览器跳转到搜索页面
             browserForm.Jump("http://www.baidu.com/s?wd=" + problem);
+            browserForm.Show();
+            browserForm.WindowState = FormWindowState.Normal;
 
             char[] ans = new char[3] { 'A', 'B', 'C' };
+            //分析问题
             AnalyzeResult aRes = AnalyzeProblem.Analyze(textBox_Problem.Text, new string[] { textBox_AnswerA.Text, textBox_AnswerB.Text, textBox_AnswerC.Text });
             MessageBox.Show("最有可能选择" + ans[aRes.Index] + "项!");
         }
@@ -195,6 +202,14 @@ namespace MillionHerosHelper
             button_Config.Enabled = true;
             button_Start.Enabled = true;
             solveProblemThread = null;
+        }
+
+        private void MainForm_Move(object sender, EventArgs e)
+        {
+            if(browserForm!=null && !browserForm.IsDisposed)
+            {
+                browserForm.Location = new Point(this.Location.X + this.Width + 10, browserForm.Location.Y);
+            }
         }
     }
 }
