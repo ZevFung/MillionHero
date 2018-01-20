@@ -140,14 +140,14 @@
             // 
             // textBox_AnswerB
             // 
-            this.textBox_AnswerB.Location = new System.Drawing.Point(97, 257);
+            this.textBox_AnswerB.Location = new System.Drawing.Point(93, 257);
             this.textBox_AnswerB.Name = "textBox_AnswerB";
             this.textBox_AnswerB.Size = new System.Drawing.Size(364, 25);
             this.textBox_AnswerB.TabIndex = 21;
             // 
             // textBox_AnswerC
             // 
-            this.textBox_AnswerC.Location = new System.Drawing.Point(96, 340);
+            this.textBox_AnswerC.Location = new System.Drawing.Point(92, 340);
             this.textBox_AnswerC.Name = "textBox_AnswerC";
             this.textBox_AnswerC.Size = new System.Drawing.Size(365, 25);
             this.textBox_AnswerC.TabIndex = 22;

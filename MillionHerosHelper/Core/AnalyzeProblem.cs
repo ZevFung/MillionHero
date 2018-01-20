@@ -120,10 +120,20 @@ namespace MillionHerosHelper
         }
 
         /// <summary>
-        /// 移除无用信息
+        /// 算法修正,移除无用信息
         /// </summary>
         public static string RemoveUselessInfo(string str)
         {
+
+            if (str.Length >= 38)
+            {
+                if (str.Contains("请问"))
+                {
+                    int p = str.IndexOf("请问");
+                    str = str.Substring(p, str.Length - p);
+                }
+            }
+
             string[] dic = new string[] { "“", "”", "\"", "以下", "下列", "哪个", "哪项", "选项", "不是", "不属于" };
             string res = str;
             foreach(string key in dic)

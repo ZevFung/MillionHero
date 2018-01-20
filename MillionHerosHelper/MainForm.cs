@@ -144,6 +144,7 @@ namespace MillionHerosHelper
 
             string recognizeResult = BaiDuOCR.Recognize(smallScreenShot);
 
+
             string[] recRes = Regex.Split(recognizeResult, "\r\n|\r|\n");
 
             CheckOCRResult(recRes);
