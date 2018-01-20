@@ -67,6 +67,28 @@ namespace MillionHerosHelper
             button_Start.Enabled = false;
             solveProblemThread = new Thread(new ThreadStart(BeginSolveProblem));
             solveProblemThread.Start();
+
+            int timeUsed = 0;
+            System.Timers.Timer monitor = new System.Timers.Timer(100);
+            monitor.Elapsed += (object _sender, System.Timers.ElapsedEventArgs _args) =>
+            {
+                if (solveProblemThread == null)
+                {
+                    monitor.Stop();
+                    monitor.Close();
+                }
+                else if (timeUsed > 10000)
+                {
+                    //solveProblemThread.Abort();
+                    FinishSolveProblem();
+                    MessageBox.Show("答题过程超过10秒,自动终止.\r\n请确保您的网络环境良好!", "执行超时", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    timeUsed += 100;
+                }
+            };
+            monitor.Start();
         }
 
         private void BeginSolveProblem()
