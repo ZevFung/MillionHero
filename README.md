@@ -1,7 +1,7 @@
 # MillionHerosHelper-百万英雄辅助
 可能是最人性化的答题辅助软件<br>
 
-# 交流群696483224
+# 交流群419958463
 
 #  <font color=#FF0000 size=72>关于API错误</font>
 内置百度OCR API每天只能使用500次，肯定不够，请申请自己的API并在助手中配置<br>
