@@ -72,7 +72,7 @@ namespace MillionHerosHelper
                     monitor.Stop();
                     monitor.Close();
                 }
-                else if (timeUsed > 15000)
+                else if (timeUsed > 22000)
                 {
                     //solveProblemThread.Abort();
                     FinishSolveProblem();

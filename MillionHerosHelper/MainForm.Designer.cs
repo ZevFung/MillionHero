@@ -47,6 +47,7 @@
             this.label_AnalyzeC = new System.Windows.Forms.Label();
             this.linkLabel_Author = new System.Windows.Forms.LinkLabel();
             this.linkLabel_SourceCode = new System.Windows.Forms.LinkLabel();
+            this.label_Version = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label_RankA
@@ -209,7 +210,7 @@
             // linkLabel_Author
             // 
             this.linkLabel_Author.AutoSize = true;
-            this.linkLabel_Author.Location = new System.Drawing.Point(413, 12);
+            this.linkLabel_Author.Location = new System.Drawing.Point(384, 12);
             this.linkLabel_Author.Name = "linkLabel_Author";
             this.linkLabel_Author.Size = new System.Drawing.Size(87, 15);
             this.linkLabel_Author.TabIndex = 27;
@@ -228,11 +229,21 @@
             this.linkLabel_SourceCode.Text = "SourceCode";
             this.linkLabel_SourceCode.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel_SourceCode_LinkClicked);
             // 
+            // label_Version
+            // 
+            this.label_Version.AutoSize = true;
+            this.label_Version.Location = new System.Drawing.Point(360, 43);
+            this.label_Version.Name = "label_Version";
+            this.label_Version.Size = new System.Drawing.Size(47, 15);
+            this.label_Version.TabIndex = 29;
+            this.label_Version.Text = "v0.02";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(512, 519);
+            this.Controls.Add(this.label_Version);
             this.Controls.Add(this.linkLabel_SourceCode);
             this.Controls.Add(this.linkLabel_Author);
             this.Controls.Add(this.label_AnalyzeC);
@@ -285,6 +296,7 @@
         private System.Windows.Forms.Label label_AnalyzeC;
         private System.Windows.Forms.LinkLabel linkLabel_Author;
         private System.Windows.Forms.LinkLabel linkLabel_SourceCode;
+        private System.Windows.Forms.Label label_Version;
     }
 }
 
