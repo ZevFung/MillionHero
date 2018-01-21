@@ -15,7 +15,17 @@ namespace MillionHerosHelper
         {
             Bitmap bitmap = new Bitmap(fileName);
             Rectangle rectangle = new Rectangle(location, size);
-            Bitmap newBitmap = bitmap.Clone(rectangle, bitmap.PixelFormat);
+            Bitmap newBitmap;
+            try
+            {
+                newBitmap = bitmap.Clone(rectangle, bitmap.PixelFormat);
+            }
+            catch(Exception ex)
+            {
+                bitmap.Dispose();
+                throw ex;
+            }
+            
 
             //将新位图写到内存流中
             MemoryStream memoryStream = new MemoryStream();

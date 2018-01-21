@@ -73,23 +73,32 @@ namespace MillionHerosHelper
             }
 
             byte[] screenShot;
-            if (checkBox_Emulator.Checked)
+            try
             {
-                screenShot = BitmapOperation.CutScreen(new Point(x, y), new Size(width, height));
-            }
-            else
-            {
-                if (!ADB.CheckConnect())
+                if (checkBox_Emulator.Checked)
                 {
-                    label_ConnectStatus.Text = "未连接";
-                    label_ConnectStatus.ForeColor = Color.Red;
-                    MessageBox.Show("连接手机失败,请按照步骤1配置!", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
+                    screenShot = BitmapOperation.CutScreen(new Point(x, y), new Size(width, height));
                 }
-                string screenShotPath = ADB.GetScreenshotPath();
-                screenShot = BitmapOperation.CutImage(screenShotPath, new Point(x, y), new Size(width, height));
+                else
+                {
+                    if (!ADB.CheckConnect())
+                    {
+                        label_ConnectStatus.Text = "未连接";
+                        label_ConnectStatus.ForeColor = Color.Red;
+                        MessageBox.Show("连接手机失败,请按照步骤1配置!", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    string screenShotPath = ADB.GetScreenshotPath();
+                    screenShot = BitmapOperation.CutImage(screenShotPath, new Point(x, y), new Size(width, height));
 
+                }
             }
+            catch(Exception ex)
+            {
+                MessageBox.Show("图像信息错误，请检查图片大小是否超出设备分辨率\r\n\r\n详细信息:\r\n" + ex, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
 
             MemoryStream memoryStream = new MemoryStream(screenShot);
             pictureBox_ScreenShot.Image = Image.FromStream(memoryStream);
