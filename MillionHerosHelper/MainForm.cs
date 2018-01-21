@@ -145,9 +145,16 @@ namespace MillionHerosHelper
             byte[] smallScreenShot;
             try
             {
-                screenShotPath = ADB.GetScreenshotPath();
-                smallScreenShot = BitmapOperation.CutImage(screenShotPath, new Point(Config.CutX, Config.CutY), new Size(Config.CutWidth, Config.CutHeight));
-                System.IO.File.Delete(screenShotPath);
+                if(Config.UseEmulator)//是否为模拟器
+                {
+                    smallScreenShot = BitmapOperation.CutScreen(new Point(Config.CutX, Config.CutY), new Size(Config.CutWidth, Config.CutHeight));
+                }
+                else
+                {
+                    screenShotPath = ADB.GetScreenshotPath();
+                    smallScreenShot = BitmapOperation.CutImage(screenShotPath, new Point(Config.CutX, Config.CutY), new Size(Config.CutWidth, Config.CutHeight));
+                    System.IO.File.Delete(screenShotPath);
+                }
             }
             catch(Exception ex)
             {

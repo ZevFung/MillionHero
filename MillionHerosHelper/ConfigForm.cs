@@ -24,6 +24,7 @@ namespace MillionHerosHelper
             textBox_Y.Text = Config.CutY.ToString();
             textBox_Height.Text = Config.CutHeight.ToString();
             textBox_Width.Text = Config.CutWidth.ToString();
+            checkBox_Emulator.Checked = Config.UseEmulator;
 
             textBox_API_KEY.Text = Config.OCR_API_KEY;
             textBox_SECRET_KEY.Text = Config.OCR_SECRET_KEY;
@@ -71,16 +72,25 @@ namespace MillionHerosHelper
                 return;
             }
 
-
-            if (!ADB.CheckConnect()) 
+            byte[] screenShot;
+            if (checkBox_Emulator.Checked)
             {
-                label_ConnectStatus.Text = "未连接";
-                label_ConnectStatus.ForeColor = Color.Red;
-                MessageBox.Show("连接手机失败,请按照步骤1配置!", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                screenShot = BitmapOperation.CutScreen(new Point(x, y), new Size(width, height));
             }
-            string screenShotPath = ADB.GetScreenshotPath();
-            byte[] screenShot = BitmapOperation.CutImage(screenShotPath, new Point(x, y), new Size(width, height));
+            else
+            {
+                if (!ADB.CheckConnect())
+                {
+                    label_ConnectStatus.Text = "未连接";
+                    label_ConnectStatus.ForeColor = Color.Red;
+                    MessageBox.Show("连接手机失败,请按照步骤1配置!", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                string screenShotPath = ADB.GetScreenshotPath();
+                screenShot = BitmapOperation.CutImage(screenShotPath, new Point(x, y), new Size(width, height));
+
+            }
+
             MemoryStream memoryStream = new MemoryStream(screenShot);
             pictureBox_ScreenShot.Image = Image.FromStream(memoryStream);
             memoryStream.Close();
@@ -106,9 +116,11 @@ namespace MillionHerosHelper
             Config.CutY = y;
             Config.CutHeight = height;
             Config.CutWidth = width;
+            Config.UseEmulator = checkBox_Emulator.Checked;
             Config.OCR_API_KEY = textBox_API_KEY.Text;
             Config.OCR_SECRET_KEY = textBox_SECRET_KEY.Text;
             BaiDuOCR.InitBaiDuOCR(textBox_API_KEY.Text, textBox_SECRET_KEY.Text);
+            Config.SaveConfig();
         }
 
         private void linkLabel_Apply_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

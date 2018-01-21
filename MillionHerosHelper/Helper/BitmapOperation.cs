@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
+using System.Windows.Forms;
 
 namespace MillionHerosHelper
 {
@@ -45,6 +47,26 @@ namespace MillionHerosHelper
             memoryStream.Close();
 
             return res;
+        }
+
+        public static byte[] CutScreen(Point location, Size size)
+        {
+            Bitmap bitmap = new Bitmap(size.Width, size.Height);
+            Graphics graphics = Graphics.FromImage(bitmap);
+            graphics.CopyFromScreen(location, new Point(0, 0), size);
+            graphics.Dispose();
+
+
+
+            MemoryStream memoryStream = new MemoryStream();
+            bitmap.Save(memoryStream, ImageFormat.Png);
+            byte[] res = new byte[memoryStream.Length];
+            memoryStream.Seek(0, SeekOrigin.Begin);
+            memoryStream.Read(res, 0, (int)memoryStream.Length);
+
+            memoryStream.Dispose();
+            bitmap.Dispose();
+            return res; 
         }
     }
 }

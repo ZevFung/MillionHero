@@ -15,6 +15,8 @@ namespace MillionHerosHelper
         public static int CutWidth { get; set; }
         public static int CutHeight { get; set; }
 
+        public static bool UseEmulator { get; set; }
+
 
         public static void LoadConfig()
         {
@@ -25,6 +27,7 @@ namespace MillionHerosHelper
             string _CutY = INIOperation.ReadValue("config.ini", "CutScreenShot", "StartY", "270");
             string _CutWidth = INIOperation.ReadValue("config.ini", "CutScreenShot", "Width", "900");
             string _CutHeight = INIOperation.ReadValue("config.ini", "CutScreenShot", "Heigh", "980");
+            string _UseEmulator = INIOperation.ReadValue("config.ini", "CutScreenShot", "UseEmulator", Boolean.FalseString);
 
             Int32.TryParse(_CutX, out int temp);
             CutX = temp;
@@ -34,6 +37,9 @@ namespace MillionHerosHelper
             CutWidth = temp;
             Int32.TryParse(_CutHeight, out temp);
             CutHeight = temp;
+
+            Boolean.TryParse(_UseEmulator, out bool _ue);
+            UseEmulator = _ue;
         }
 
         public static void SaveConfig()
@@ -45,6 +51,7 @@ namespace MillionHerosHelper
             INIOperation.WriteValue("config.ini", "CutScreenShot", "StartY", CutY.ToString());
             INIOperation.WriteValue("config.ini", "CutScreenShot", "Width", CutWidth.ToString());
             INIOperation.WriteValue("config.ini", "CutScreenShot", "Heigh", CutHeight.ToString());
+            INIOperation.WriteValue("config.ini", "CutScreenShot", "UseEmulator", UseEmulator.ToString());
         }
     }
 }
