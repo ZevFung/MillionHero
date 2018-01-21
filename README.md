@@ -1,5 +1,13 @@
 # MillionHerosHelper-百万英雄辅助
-可能是最人性化的答题辅助软件\<br>
+可能是最人性化的答题辅助软件<br>
+
+# '关于API错误'
+内置百度OCR API每天只能使用500次，肯定不够，请申请自己的API并在助手中配置<br>
+申请地址[通用文字识别-百度AI](https://console.bce.baidu.com/ai/#/ai/ocr/overview/index)<br>
+简单教程:<br>
+1.打开链接并登陆百度账号，完善个人信息<br>
+2.点击创建应用，新建一个应用<br>
+3.在应用列表中即可看到API Key和Secret Key，复制到助手中<br>
 
 # 特性
 O:全自动识别题目，自动分析，推荐出最适合的选项<br>
